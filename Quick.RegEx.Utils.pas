@@ -84,6 +84,8 @@ type
     class function IsValidDNI_ES(const aDNI : string) : Boolean;
     /// <summary> Validates USA Social Security Number document </summary>
     class function IsValidSSN_US(const aSSN : string) : Boolean;
+    /// <summary> Validates mask number </summary>
+    class function IsValidMaskNumber(const aMask : string) : Boolean;
   end;
 
 implementation
@@ -188,6 +190,11 @@ end;
 class function TRegExUtils.IsValidVisaCard(const aCardNumber: string): Boolean;
 begin
   Result := TRegEx.IsMatch(aCardNumber,'^4[0-9]{12}(?:[0-9]{3})?$');
+end;
+
+class function TRegExUtils.IsValidMaskNumber(const aMask: string): Boolean;
+begin
+  Result := TRegEx.IsMatch(aMask,'^[#,.0-9]+$');
 end;
 
 class function TRegExUtils.IsValidMasterCard(const aCardNumber: string): Boolean;
